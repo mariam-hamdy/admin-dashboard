@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidenav.component.css']
 })
 export class SidenavComponent implements OnInit {
-
+  
+  title: string = 'Admin dashboard';
   constructor() { }
 
   ngOnInit(): void {
