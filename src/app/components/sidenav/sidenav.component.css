@@ -4,10 +4,7 @@
 }
 
 .example-sidenav-content {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
+  margin: 1.5rem;
 }
 
 .example-sidenav {
@@ -21,6 +18,7 @@
   color: #ffffff;
   font-size: 1.2rem;
   padding: 1.1rem;
+  margin-bottom: .7rem;
   
 }
 mat-list-item {
