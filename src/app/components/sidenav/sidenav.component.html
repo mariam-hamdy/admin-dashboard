@@ -3,8 +3,13 @@
     <h2>{{title}}</h2>
     <mat-list>
         <mat-list-item>
-            <a routerLink="/users">Users</a>
-            
+            <a routerLink="/home" routerLinkActive="active">Home</a>
+        </mat-list-item>
+        <mat-list-item>
+            <a routerLink="/users" routerLinkActive="active">Users</a>
+        </mat-list-item>
+        <mat-list-item>
+            <a routerLink="/createuser" routerLinkActive="active">Create User</a>
         </mat-list-item>
     </mat-list>
   </mat-drawer>

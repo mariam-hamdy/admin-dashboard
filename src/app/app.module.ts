@@ -9,13 +9,15 @@ import { FormsModule } from '@angular/forms';
 import { AngularMaterialModule } from './shared/angular-material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UsersComponent } from './components/users/users.component';
+import { UserCreateComponent } from './components/user-create/user-create.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidenavComponent,
     HomeComponent,
-    UsersComponent
+    UsersComponent,
+    UserCreateComponent
   ],
   imports: [
     BrowserModule,
