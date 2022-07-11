@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IUser } from '../models/user';
 
@@ -15,14 +15,21 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getUsers() {
-    this.http.get(environment.serverUrl+'users').subscribe((data) => {
-      this.users= data as IUser[];
-    });
-    
+    if(this.users.length == 0) {
+      this.http.get(environment.serverUrl+'users').subscribe((data: any) => {
+        this.users= this.users.concat(data as IUser[]);
+        this.userSubject.next([...this.users]);
+      });
+    }else {
+      this.userSubject.next([...this.users]);
+    } 
   }
 
-  getUserSubject(){
-    console.log(this.users);
+  getUserSubject(): Observable<IUser[]>{
+   return this.userSubject.asObservable();
   }
 
+  getUserById(id: number): string {
+    return this.users.filter(row => row.id == id)[0]?.name;
+  }
 }

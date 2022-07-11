@@ -11,10 +11,13 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatCardModule} from '@angular/material/card';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ConfirmDialogComponent
+  ],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -40,7 +43,8 @@ import {MatCardModule} from '@angular/material/card';
     MatListModule,
     MatDialogModule,
     MatSnackBarModule,
-    MatCardModule
+    MatCardModule,
+    ConfirmDialogComponent
   ]
 })
 export class AngularMaterialModule { }

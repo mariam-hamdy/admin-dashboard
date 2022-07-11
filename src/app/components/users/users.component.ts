@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { IUser } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
+import { ConfirmDialogComponent } from 'src/app/shared/confirm-dialog/confirm-dialog.component';
 
 
 @Component({
@@ -8,26 +12,40 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent implements OnInit, AfterViewInit {
 
-  users: IUser[]= [
-    {id: 1, name: 'mariam hamdy', phone: '0118288', email: 'mariam@gmail.co', website: 'mariam@gmail.com'},
-    {id: 2, name: 'mariam hamdy', phone: '0118288', email: 'mariam@gmail.co', website: 'mariam@gmail.com'},
-    {id: 3, name: 'mariam hamdy', phone: '0118288', email: 'mariam@gmail.co', website: 'mariam@gmail.com'},
-    {id: 4, name: 'mariam hamdy', phone: '0118288', email: 'mariam@gmail.co', website: 'mariam@gmail.com'},
-    {id: 5, name: 'mariam hamdy', phone: '0118288', email: 'mariam@gmail.co', website: 'mariam@gmail.com'},
-    {id: 5, name: 'mariam hamdy', phone: '0118288', email: 'mariam@gmail.co', website: 'mariam@gmail.com'},
-    {id: 5, name: 'mariam hamdy', phone: '0118288', email: 'mariam@gmail.co', website: 'mariam@gmail.com'},
-    {id: 5, name: 'mariam hamdy', phone: '0118288', email: 'mariam@gmail.co', website: 'mariam@gmail.com'}
-  ];
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
 
-  displayedColumns: string[] = ['name', 'phone', 'email', 'website'];
-  dataSource = this.users;
-  constructor(private userService: UserService) { }
-
-  ngOnInit(): void {
-    
+  displayedColumns: string[] = ['name', 'phone', 'email', 'website', 'action'];
+  users: IUser[]= [];
+  dataSource: MatTableDataSource<IUser> = new MatTableDataSource<IUser>();
+  
+  
+  constructor(private userService: UserService, private dialog: MatDialog) { }
+  
+  ngAfterViewInit(): void {
+    this.dataSource.paginator= this.paginator;
   }
 
+  ngOnInit(): void {
+    this.loadUsers();
+  }
+  loadUsers() {
+    this.userService.getUserSubject().subscribe((data: IUser[]) => {
+      this.dataSource.data = data;
+    });
+    this.userService.getUsers();
+  }
+
+  onDelete(id: number) {
+   let name = this.userService.getUserById(id);
+   const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+    width: '300px',
+    data: {
+      name
+    },
+  });
+  }
   
 }
