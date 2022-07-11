@@ -32,4 +32,15 @@ export class UserService {
   getUserById(id: number): string {
     return this.users.filter(row => row.id == id)[0]?.name;
   }
+
+  deleteUser(id: number) {
+    this.users = this.users.filter(row => row.id != id);
+    this.userSubject.next([...this.users]);
+  }
+
+  addUser(user: IUser) {
+    user.id = this.users.length + 1;
+    this.users.push(user);
+    this.userSubject.next([...this.users]);
+  }
 }

@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { IUser } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
@@ -16,16 +18,18 @@ export class UsersComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   displayedColumns: string[] = ['name', 'phone', 'email', 'website', 'action'];
   users: IUser[]= [];
   dataSource: MatTableDataSource<IUser> = new MatTableDataSource<IUser>();
   
   
-  constructor(private userService: UserService, private dialog: MatDialog) { }
+  constructor(private userService: UserService, private dialog: MatDialog, private snackBar: MatSnackBar) { }
   
   ngAfterViewInit(): void {
     this.dataSource.paginator= this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   ngOnInit(): void {
@@ -42,9 +46,19 @@ export class UsersComponent implements OnInit, AfterViewInit {
    let name = this.userService.getUserById(id);
    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
     width: '300px',
+    disableClose:true,
     data: {
       name
-    },
+    }
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    if(result) {
+      this.userService.deleteUser(id);
+      this.snackBar.open(name+ " deleted successfully", "X",{
+        duration: 3000
+      });
+    }
   });
   }
   

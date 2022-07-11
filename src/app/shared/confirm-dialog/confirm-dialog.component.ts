@@ -15,9 +15,10 @@ export class ConfirmDialogComponent implements OnInit {
   }
 
   onCancel() {
-
+    this.dialogRef.close(false);
   }
-  Delete() {
-    
+  onConfirm() {
+    this.dialogRef.close(true);
+
   }
 }

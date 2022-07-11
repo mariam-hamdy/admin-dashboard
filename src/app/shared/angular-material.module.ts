@@ -12,6 +12,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatCardModule} from '@angular/material/card';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     MatListModule,
     MatDialogModule,
     MatSnackBarModule,
-    MatCardModule
+    MatCardModule,
+    MatFormFieldModule
   ],
   exports: [
     MatButtonModule,
@@ -44,7 +46,8 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     MatDialogModule,
     MatSnackBarModule,
     MatCardModule,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    MatFormFieldModule
   ]
 })
 export class AngularMaterialModule { }
