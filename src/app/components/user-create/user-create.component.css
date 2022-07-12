@@ -1,0 +1,11 @@
+.addForm {
+    display: flex;
+    flex-direction: column;
+    
+}
+mat-form-field {
+    width: 25rem;
+}
+.example-card {
+    width: 40rem;
+}
