@@ -7,29 +7,29 @@
             <mat-form-field appearance="outline">
                 <mat-label>User Name</mat-label>
                 <input matInput name="username" ngModel placeholder="Enter your name" required minlength="4" autocomplete="false">
-                <mat-icon *ngIf="addUserForm.controls['username']?.valid && addUserForm.controls['username']?.touched" matSuffix>sentiment_very_satisfied</mat-icon>
-                <mat-icon *ngIf="!(addUserForm.controls['username']?.valid && addUserForm.controls['username']?.touched)" matSuffix>sentiment_very_dissatisfied</mat-icon>
+                <mat-icon *ngIf="addUserForm.controls.username?.valid && addUserForm.controls.username?.touched" matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-icon *ngIf="!(addUserForm.controls.username?.valid && addUserForm.controls.username?.touched)" matSuffix>sentiment_very_dissatisfied</mat-icon>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Email</mat-label>
                 <input matInput placeholder="Enter your email" name="email" ngModel required minlength="4" autocomplete="false">
-                <mat-icon *ngIf="addUserForm.controls['email']?.valid && addUserForm.controls['email']?.touched" matSuffix>sentiment_very_satisfied</mat-icon>
-                <mat-icon *ngIf="!(addUserForm.controls['email']?.valid && addUserForm.controls['email']?.touched)" matSuffix>sentiment_very_dissatisfied</mat-icon>
+                <mat-icon *ngIf="addUserForm.controls.email?.valid && addUserForm.controls.email?.touched" matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-icon *ngIf="!(addUserForm.controls.email?.valid && addUserForm.controls.email?.touched)" matSuffix>sentiment_very_dissatisfied</mat-icon>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Website</mat-label>
                 <input matInput placeholder="Enter your website" name="website" ngModel required minlength="4" autocomplete="false">
-                <mat-icon *ngIf="addUserForm.controls['website']?.valid && addUserForm.controls['website']?.touched" matSuffix>sentiment_very_satisfied</mat-icon>
-                <mat-icon *ngIf="!(addUserForm.controls['website']?.valid && addUserForm.controls['website']?.touched)" matSuffix>sentiment_very_dissatisfied</mat-icon>
+                <mat-icon *ngIf="addUserForm.controls.website?.valid && addUserForm.controls.website?.touched" matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-icon *ngIf="!(addUserForm.controls.website?.valid && addUserForm.controls.website?.touched)" matSuffix>sentiment_very_dissatisfied</mat-icon>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Phone</mat-label>
                 <input matInput placeholder="Enter your phone" name="phone" ngModel required minlength="4" autocomplete="false">
-                <mat-icon *ngIf="addUserForm.controls['phone']?.valid && addUserForm.controls['phone']?.touched" matSuffix>sentiment_very_satisfied</mat-icon>
-                <mat-icon *ngIf="!(addUserForm.controls['phone']?.valid && addUserForm.controls['phone']?.touched)" matSuffix>sentiment_very_dissatisfied</mat-icon>
+                <mat-icon *ngIf="addUserForm.controls.phone?.valid && addUserForm.controls.phone?.touched" matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-icon *ngIf="!(addUserForm.controls.phone?.valid && addUserForm.controls.phone?.touched)" matSuffix>sentiment_very_dissatisfied</mat-icon>
             </mat-form-field>
             <button [disabled]="addUserForm.invalid" mat-raised-button color="primary" class="btn">Save</button>
         </form>
