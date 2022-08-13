@@ -15,6 +15,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getUsers() {
+    //here I emit so in the component I listen on it only
     if(this.users.length == 0) {
       this.http.get(environment.serverUrl+'users').subscribe((data: any) => {
         this.users= this.users.concat(data as IUser[]);
@@ -26,6 +27,9 @@ export class UserService {
   }
 
   getUserSubject(): Observable<IUser[]>{
+    //here I return the userSubject which I can listen on it or subscribe
+    //but I CAN'T EMIT
+    //I only emit the event on the service
    return this.userSubject.asObservable();
   }
 
